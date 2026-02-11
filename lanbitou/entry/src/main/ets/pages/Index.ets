@@ -1,4 +1,5 @@
 import { listNotes } from '../data/kv'
+import router from '@ohos.router'
 
 @Entry
 @Component
@@ -15,7 +16,7 @@ struct Index {
       Text('烂笔头').fontSize(22).fontWeight(FontWeight.Bold)
 
       Button('新建笔记').onClick(() => {
-        // TODO: 跳转到 NoteEditor
+        router.pushUrl({ url: 'pages/NoteEditor' })
       })
 
       Divider()
