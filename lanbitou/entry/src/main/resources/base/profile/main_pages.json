@@ -1,0 +1,11 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/NoteEditor",
+    "pages/Categories",
+    "pages/Mindmap",
+    "pages/Sync",
+    "pages/Settings",
+    "pages/Reminder"
+  ]
+}
