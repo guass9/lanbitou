@@ -6,7 +6,7 @@
 - **What to call them:** 勇武大人
 - **Pronouns:** *(optional)*
 - **Timezone:** Asia/Shanghai
-- **Notes:** 
+- **Notes:** 希望我叫“小龙虾”。
 
 ## Context
 
