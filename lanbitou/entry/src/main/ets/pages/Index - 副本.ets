@@ -1,21 +1,19 @@
-﻿import { listNotes, NoteItem } from '../data/kv'
+import { listNotes } from '../data/kv'
 import router from '@ohos.router'
 
 @Entry
 @Component
 struct Index {
-  @State notes: NoteItem[] = []
+  @State notes: Array<any> = []
 
-  async aboutToAppear(): Promise<void> {
+  async aboutToAppear() {
     const context = getContext(this)
     this.notes = await listNotes(context)
   }
 
   build() {
     Column({ space: 12 }) {
-      Text('烂笔头')
-        .fontSize(22)
-        .fontWeight(FontWeight.Bold)
+      Text('烂笔头').fontSize(22).fontWeight(FontWeight.Bold)
 
       Button('新建笔记').onClick(() => {
         router.pushUrl({ url: 'pages/NoteEditor' })
@@ -23,14 +21,11 @@ struct Index {
 
       Divider()
 
-      Text('时间线')
-        .fontSize(16)
-        .fontWeight(FontWeight.Medium)
-
+      Text('时间线').fontSize(16).fontWeight(FontWeight.Medium)
       if (this.notes.length === 0) {
         Text('暂无笔记')
       } else {
-        ForEach(this.notes, (note: NoteItem) => {
+        ForEach(this.notes, (note: any) => {
           Column({ space: 4 }) {
             Text(note.title || '无标题').fontWeight(FontWeight.Bold)
             Text(note.contentMd || '')
@@ -47,6 +42,7 @@ struct Index {
       }
 
       Divider()
+
       Text('快捷入口')
       Row({ space: 8 }) {
         Button('分类')

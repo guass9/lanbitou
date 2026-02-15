@@ -1,12 +1,12 @@
-import { listCategories, listTags } from '../data/kv'
+import { listCategories, listTags, CategoryItem, TagItem } from '../data/kv'
 
 @Entry
 @Component
 struct Categories {
-  @State cats: Array<any> = []
-  @State tags: Array<any> = []
+  @State cats: CategoryItem[] = []
+  @State tags: TagItem[] = []
 
-  async aboutToAppear() {
+  async aboutToAppear(): Promise<void> {
     const context = getContext(this)
     this.cats = await listCategories(context)
     this.tags = await listTags(context)
@@ -15,21 +15,22 @@ struct Categories {
   build() {
     Column({ space: 12 }) {
       Text('分类').fontSize(20).fontWeight(FontWeight.Bold)
+
       if (this.cats.length === 0) {
         Text('暂无分类')
       } else {
-        ForEach(this.cats, (c: any) => {
+        ForEach(this.cats, (c: CategoryItem) => {
           Text(c.name)
         })
       }
 
       Divider()
-
       Text('标签').fontSize(20).fontWeight(FontWeight.Bold)
+
       if (this.tags.length === 0) {
         Text('暂无标签')
       } else {
-        ForEach(this.tags, (t: any) => {
+        ForEach(this.tags, (t: TagItem) => {
           Text(t.name)
         })
       }
